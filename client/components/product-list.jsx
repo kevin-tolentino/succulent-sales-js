@@ -7,6 +7,7 @@ export default class ProductList extends React.Component {
     this.state = {
       productList: []
     };
+    this.getProducts = this.getProducts.bind(this);
   }
 
   getProducts() {
@@ -15,16 +16,13 @@ export default class ProductList extends React.Component {
       .then(data => {
         this.setState({ productList: data });
       })
+    /* eslint-disable no-console */
       .catch(err => console.log(err));
   }
 
-  // componentDidMount() {
-  //   fetch('/api/health-check')
-  //     .then(res => res.json())
-  //     .then(data => this.setState({ message: data.message || data.error }))
-  //     .catch(err => this.setState({ message: err.message }))
-  //     .finally(() => this.setState({ isLoading: false }));
-  // }
+  componentDidMount() {
+    this.getProducts();
+  }
   // if (rowCounter = 3){create new row where starting with current index}
 
   render() {
