@@ -1,0 +1,15 @@
+* {
+  box-sizing: border-box;
+}
+
+
+
+#root {
+  height: 98vh;
+  width: 100%;
+  background-color: #E5E5E5;
+}
+
+nav * {
+  color: white;
+}
