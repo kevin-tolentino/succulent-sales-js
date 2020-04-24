@@ -1,13 +1,11 @@
 import React from 'react';
-import Header from './header';
-import ProductList from './product-list';
+import ProductListItem from './product-list-item';
 
-export default class App extends React.Component {
+export default class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      message: null,
-      isLoading: true
+      productList: []
     };
   }
 
@@ -18,14 +16,13 @@ export default class App extends React.Component {
   //     .catch(err => this.setState({ message: err.message }))
   //     .finally(() => this.setState({ isLoading: false }));
   // }
+  // if (rowCounter = 3){create new row where starting with current index}
 
   render() {
     return (
       <>
-        <Header />
-        <div className="container">
-          <ProductList />
-        </div>
+        <ProductListItem />
+
       </>
     );
   }
