@@ -9,6 +9,8 @@ export default class ProductList extends React.Component {
     };
   }
 
+  // getProducts
+
   // componentDidMount() {
   //   fetch('/api/health-check')
   //     .then(res => res.json())
