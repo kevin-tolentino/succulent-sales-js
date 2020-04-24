@@ -9,7 +9,14 @@ export default class ProductList extends React.Component {
     };
   }
 
-  // getProducts
+  getProducts() {
+    fetch('/api/products')
+      .then(response => response.json())
+      .then(data => {
+        this.setState({ productList: data });
+      })
+      .catch(err => console.log(err));
+  }
 
   // componentDidMount() {
   //   fetch('/api/health-check')
