@@ -3,6 +3,7 @@
 .vscode
 .DS_Store
 cl-shortcuts.txt
+brainstorm.jsx
 node_modules
 server/sessions/*.json
 server/public/main.js*

@@ -7,22 +7,22 @@ body{
   background-color: #E5E5E5;
 }
 
-/* #root {
+#root {
   height: 98vh;
   width: 100%;
-} */
+}
 
 nav * {
   color: white;
 }
 
-.product-card {
-  width: 148px;
-  height: 197px;
+
+.card-div p {
+  color: black;
 }
 
-.product-card p {
-  color: black;
+.card-image{
+  height: 250px;
 }
 
 .card-image {
