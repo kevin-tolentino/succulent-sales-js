@@ -22,7 +22,11 @@ app.get('/api/health-check', (req, res, next) => {
 app.get('/api/products', (req, res, next) => {
   const sql = `
 select
-*
+"productId",
+"name",
+"price",
+"image",
+"shortDescription"
 from
   "products"
 order by
@@ -35,9 +39,25 @@ order by
     .catch(err => next(err));
 });
 
-app.get('/api/products:productId', (req, res, next) => {
+app.get('/api/products/:productId', (req, res, next) => {
+  let productId = parseInt(req.params.productId);
+  productId = [productId];
+  const sql = `
+  select
+  *
+  from
+  "products"
+  where "productId" = $1;
+  `;
 
-});
+  db.query(sql, productId)
+    .then(result => {
+      const product = result.rows[0];
+      res.json(product);
+    })
+    .catch(err => next(err));
+}
+);
 
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
