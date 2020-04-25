@@ -5,8 +5,7 @@ export default class ProductList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      productList: [],
-      rowList: []
+      productList: []
     };
     this.getProducts = this.getProducts.bind(this);
   }
@@ -15,10 +14,7 @@ export default class ProductList extends React.Component {
     fetch('/api/products')
       .then(response => response.json())
       .then(data => {
-        const listItemsArray = data.map(currentValue => {
-          return (<ProductListItem key={currentValue.productId} name={currentValue.name} shortDescription={currentValue.shortDescription} price={currentValue.price} image={currentValue.image} />);
-        });
-        this.setState({ productList: listItemsArray });
+        this.setState({ productList: data });
       })
     /* eslint-disable no-console */
       .catch(err => console.log(err));
@@ -29,9 +25,14 @@ export default class ProductList extends React.Component {
   }
 
   render() {
+    const reactElementArray = this.state.productList.map(currentValue => {
+      return (<ProductListItem key={currentValue.productId} name={currentValue.name} shortDescription={currentValue.shortDescription} price={currentValue.price} image={currentValue.image} />);
+    });
+
     return (
+
       <>
-        {this.state.productList}
+        {reactElementArray}
       </>
     );
   }
