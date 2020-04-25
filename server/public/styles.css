@@ -1,25 +1,5 @@
-* {
-  box-sizing: border-box;
-
-}
-
-body{
-  background-color: #E5E5E5;
-}
-
-#root {
-  height: 98vh;
-  width: 100%;
-}
-
-nav * {
-  color: white;
-}
 
 
-.card-div p {
-  color: black;
-}
 
 .card-image{
   height: 250px;

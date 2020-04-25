@@ -7,7 +7,7 @@ export default function ProductListItem(props) {
       <div className="card-body">
         <h5 className="card-title">{props.name}</h5>
         <h6 className="card-title text-muted">${props.price / 100}</h6>
-        <p >{props.shortDescription}</p>
+        <p className="text-body">{props.shortDescription}</p>
       </div>
     </div>
   );
