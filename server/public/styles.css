@@ -3,19 +3,22 @@
 
 }
 
-
-#root {
-  height: 98vh;
-  width: 100%;
+body{
   background-color: #E5E5E5;
 }
+
+/* #root {
+  height: 98vh;
+  width: 100%;
+} */
 
 nav * {
   color: white;
 }
 
 .product-card {
-  height: 33%;
+  width: 148px;
+  height: 197px;
 }
 
 .product-card p {

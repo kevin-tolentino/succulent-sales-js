@@ -24,7 +24,10 @@ export default class App extends React.Component {
       <>
         <Header />
         <div className="container">
-          <ProductList />
+          <div className="row">
+
+            <ProductList />
+          </div>
         </div>
       </>
     );
