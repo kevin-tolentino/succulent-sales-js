@@ -16,8 +16,7 @@ export default class ProductList extends React.Component {
       .then(data => {
         this.setState({ productList: data });
       })
-    /* eslint-disable no-console */
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
 
   componentDidMount() {
