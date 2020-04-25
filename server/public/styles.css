@@ -1,0 +1,10 @@
+
+
+
+.card-image{
+  height: 250px;
+}
+
+.card-image {
+  object-fit: contain;
+}
