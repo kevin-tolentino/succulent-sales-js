@@ -35,6 +35,10 @@ order by
     .catch(err => next(err));
 });
 
+app.get('/api/products:productId', (req, res, next) => {
+
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
