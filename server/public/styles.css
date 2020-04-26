@@ -7,9 +7,6 @@ body {
   height: 250px;
 }
 
-.detail-card-image {
-  height: 250px;
-}
 
 .card-image {
   object-fit: contain;
