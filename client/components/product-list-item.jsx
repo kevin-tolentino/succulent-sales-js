@@ -3,12 +3,6 @@ import React from 'react';
 export default function ProductListItem(props) {
   function handleClick() {
     const paramObj = { productId: props.productId };
-    // for (const property in props) {
-    //   if (property === 'productId') {
-    //     paramObj = { [property]: props[property] };
-    //     break;
-    //   }
-    // }
     props.onClick('details', paramObj);
   }
 

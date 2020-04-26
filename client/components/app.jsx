@@ -21,22 +21,24 @@ export default class App extends React.Component {
   }
 
   render() {
-    // const name = this.state.view.name
-    // let details = if (name === 'details') return
-    // let product =
+    const name = this.state.view.name;
+    let componentRender;
+    if (name === 'catalog') {
+      componentRender = <ProductList onClick={this.setView} />;
+    } else if (name === 'details') {
+      componentRender = <ProductDetails onClick={this.setView} params={this.state.view.params} />;
+    }
     return (
       <>
         <div className="row-1">
           <Header />
         </div>
         <div className="row-2">
-          <div className="min-vh-80 container">
-            {/* {if (this.state)} */}
-            <ProductDetails onClick={this.setView} params={this.state.view.params}/>
-            <ProductList onClick={this.setView}/>
-
+          <div className="container">
             <div className="row">
+              {componentRender}
             </div>
+
           </div>
         </div>
       </>
