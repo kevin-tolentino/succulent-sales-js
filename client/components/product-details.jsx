@@ -30,9 +30,12 @@ export default class ProductDetails extends React.Component {
       const shortDescription = this.state.product.shortDescription;
       const longDescription = this.state.product.longDescription;
       return (
-        <div className="col-12 bg-secondary">
+        <div className="col-12 bg-white">
           <div className="row mt-3">
-            <h6 className='ml-2 mt-3 back-to'>&#60; back to catalog</h6>
+            <h6 id='back-to' onClick={(name, params) => {
+              this.props.onClick('catalog', this.props.params);
+            }}
+            className='ml-2 mt-3 back-to'>&#60; back to catalog</h6>
           </div>
           <div className="row mt-3 mb-3">
             <div className="col-5">
