@@ -24,8 +24,17 @@ export default class ProductList extends React.Component {
   }
 
   render() {
+    const changeView = this.props.onClick;
     const reactElementArray = this.state.productList.map(currentValue => {
-      return (<ProductListItem key={currentValue.productId} name={currentValue.name} shortDescription={currentValue.shortDescription} price={currentValue.price} image={currentValue.image} />);
+      return (<ProductListItem onClick={(name, params) => {
+        changeView(name, params);
+      }}
+      key={currentValue.productId}
+      productId = {currentValue.productId}
+      name={currentValue.name}
+      shortDescription={currentValue.shortDescription}
+      price={currentValue.price}
+      image={currentValue.image} />);
     });
 
     return (

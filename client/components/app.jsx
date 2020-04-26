@@ -13,10 +13,14 @@ export default class App extends React.Component {
         params: {}
       }
     };
+    this.setView = this.setView.bind(this);
   }
 
   setView(name, params) {
-
+    const newObj = {};
+    let newView = Object.assign(newObj, this.state.view);
+    newView = { view: { name: name, params: params } };
+    this.setState({ view: newView });
   }
 
   render() {
@@ -28,9 +32,9 @@ export default class App extends React.Component {
         <div className="row-2">
           <div className="min-vh-80 container">
             <ProductDetails />
+            <ProductList onClick={this.setView}/>
 
             <div className="row">
-              <ProductList />
             </div>
           </div>
         </div>
