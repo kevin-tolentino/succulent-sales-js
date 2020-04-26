@@ -15,6 +15,10 @@ export default class App extends React.Component {
     };
   }
 
+  setView(name, params) {
+
+  }
+
   render() {
     return (
       <>
