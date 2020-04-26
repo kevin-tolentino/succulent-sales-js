@@ -17,13 +17,13 @@ export default class App extends React.Component {
   }
 
   setView(name, params) {
-    const newObj = {};
-    let newView = Object.assign(newObj, this.state.view);
-    newView = { view: { name: name, params: params } };
-    this.setState({ view: newView });
+    this.setState({ view: { name, params } });
   }
 
   render() {
+    // const name = this.state.view.name
+    // let details = if (name === 'details') return
+    // let product =
     return (
       <>
         <div className="row-1">
@@ -31,7 +31,8 @@ export default class App extends React.Component {
         </div>
         <div className="row-2">
           <div className="min-vh-80 container">
-            <ProductDetails />
+            {/* {if (this.state)} */}
+            <ProductDetails onClick={this.setView} params={this.state.view.params}/>
             <ProductList onClick={this.setView}/>
 
             <div className="row">
