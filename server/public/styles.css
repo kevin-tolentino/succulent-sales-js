@@ -1,10 +1,21 @@
 
-
+body {
+  height: 100vh;
+}
 
 .card-image{
   height: 250px;
 }
 
+
 .card-image {
   object-fit: contain;
+}
+
+h6.back-to {
+  cursor: pointer;
+}
+
+.card-div{
+  cursor: pointer;
 }
