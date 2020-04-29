@@ -79,6 +79,16 @@ order by
     .catch(err => next(err));
 });
 
+app.post('/api/cart', (req, res, next) => {
+  // const keyNames = Object.keys(req.body);
+  if (isNaN(req.body.productId)) {
+    return res.status(400).json({ error: `Invalid field used for this POST method for ProductId '${req.body.productId}'. Try using a number type value.` });
+  }
+  if (req.body.productId < 0) {
+    return res.status(400).json({ error: `Invalid field used for this POST method for ProductId '${req.body.productId}'. Please use an Id greater than 0.` });
+  }
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
