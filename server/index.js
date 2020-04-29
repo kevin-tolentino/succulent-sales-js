@@ -87,6 +87,37 @@ app.post('/api/cart', (req, res, next) => {
   if (req.body.productId < 0) {
     return res.status(400).json({ error: `Invalid field used for this POST method for ProductId '${req.body.productId}'. Please use an Id greater than 0.` });
   }
+  const sql = `
+  select
+  "price"
+  from
+    "products"
+  where "productId" = $1
+  `;
+  const values = [req.body.productId];
+  db.query(sql, values)
+    .then(result => {
+      if (result.rows.length === 0) {
+        throw new ClientError(`Product Id: ${req.body.productId} cannot be found`, 400);
+      }
+      const price = result.rows[0];
+      const sqlInsert = `
+      insert into "carts" ("cartId", "createdAt")
+      values (default, default)
+      returning "cartId";`;
+      return db.query(sqlInsert)
+        .then(result => {
+          const returnObj = Object.assign(price, result.rows[0]);
+          return returnObj;
+        })
+        .catch(err => next(err));
+    })
+    .then(result => {
+      // console.log(result);
+    })
+  // .then(result => {})
+  // .then(result => { })
+    .catch(err => next(err.message));
 });
 
 app.use('/api', (req, res, next) => {
