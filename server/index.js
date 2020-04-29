@@ -107,7 +107,7 @@ app.post('/api/cart', (req, res, next) => {
       returning "cartId";`;
       return db.query(sqlInsert)
         .then(result => {
-          const returnObj = Object.assign(price, result.rows[0]);
+          const returnObj = Object.assign(result.rows[0], price);
           return returnObj;
         })
         .catch(err => next(err));
@@ -115,6 +115,7 @@ app.post('/api/cart', (req, res, next) => {
     .then(result => {
       const returnedCartId = result.cartId;
       req.session.cartId = returnedCartId;
+      // const sqlInsert
     })
   // .then(result => {})
   // .then(result => { })
