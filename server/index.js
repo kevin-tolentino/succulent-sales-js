@@ -113,7 +113,8 @@ app.post('/api/cart', (req, res, next) => {
         .catch(err => next(err));
     })
     .then(result => {
-      // console.log(result);
+      const returnedCartId = result.cartId;
+      req.session.cartId = returnedCartId;
     })
   // .then(result => {})
   // .then(result => { })
