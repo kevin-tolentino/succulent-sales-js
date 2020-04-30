@@ -64,7 +64,7 @@ app.get('/api/products/:productId', (req, res, next) => {
 
 app.get('/api/cart', (req, res, next) => {
   if (!req.session.cartId) {
-    return [];
+    return res.status(200).json([]);
   } else {
     const sqlSelect = `
   select "c"."cartItemId",
@@ -88,7 +88,7 @@ app.get('/api/cart', (req, res, next) => {
 
 app.post('/api/cart', (req, res, next) => {
   if (isNaN(req.body.productId)) {
-    return res.status(400).json({ error: `Invalid field used for this POST method for ProductId '${req.body.productId}'. Try using a number type value.` });
+    return res.status(400).json({ error: `Invalid field used for this POST method for ProductId '${req.body.productId}'. Please correct property syntax or try using a number type value.` });
   }
   if (req.body.productId < 0) {
     return res.status(400).json({ error: `Invalid field used for this POST method for ProductId '${req.body.productId}'. Please use an Id greater than 0.` });
@@ -105,7 +105,7 @@ app.post('/api/cart', (req, res, next) => {
   db.query(sqlSelect, values)
     .then(result => {
       if (result.rows.length === 0) {
-        throw new ClientError(`Product Id: ${req.body.productId} cannot be found`, 400);
+        throw next(new ClientError(`Product Id: ${req.body.productId} cannot be found`, 400));
       }
       const priceAndProductId = result.rows[0];
       if (req.session.cartId !== undefined) {
@@ -159,7 +159,7 @@ where "c"."cartItemId" = $1
           res.status(201).json(result.rows[0]);
         });
     })
-    .catch(err => next(err.message));
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
