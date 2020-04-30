@@ -63,7 +63,7 @@ app.get('/api/products/:productId', (req, res, next) => {
 );
 
 app.get('/api/cart', (req, res, next) => {
-  const sql = `
+  const sqlSelect = `
 select
 "cartId",
 "createdAt"
@@ -72,22 +72,21 @@ from
 order by
   "cartId"
   `;
-  db.query(sql)
+  db.query(sqlSelect)
     .then(result => {
-      res.json(result.rows);
+      res.json(result.rows[0]);
     })
     .catch(err => next(err));
 });
 
 app.post('/api/cart', (req, res, next) => {
-  // const keyNames = Object.keys(req.body);
   if (isNaN(req.body.productId)) {
     return res.status(400).json({ error: `Invalid field used for this POST method for ProductId '${req.body.productId}'. Try using a number type value.` });
   }
   if (req.body.productId < 0) {
     return res.status(400).json({ error: `Invalid field used for this POST method for ProductId '${req.body.productId}'. Please use an Id greater than 0.` });
   }
-  const sql = `
+  const sqlSelect = `
   select
   "price",
   "productId"
@@ -96,7 +95,7 @@ app.post('/api/cart', (req, res, next) => {
   where "productId" = $1
   `;
   const values = [req.body.productId];
-  db.query(sql, values)
+  db.query(sqlSelect, values)
     .then(result => {
       if (result.rows.length === 0) {
         throw new ClientError(`Product Id: ${req.body.productId} cannot be found`, 400);
@@ -114,10 +113,8 @@ app.post('/api/cart', (req, res, next) => {
         .catch(err => next(err));
     })
     .then(result => {
-      // console.log('restult', result);
       const returnedCartId = result.cartId;
       req.session.cartId = returnedCartId;
-      // result.price, result.cartId, result.productUd
       const sqlInsert = `
       insert into "cartItems" ("cartId", "productId", "price")
       values ($1, $2, $3)
@@ -131,7 +128,23 @@ app.post('/api/cart', (req, res, next) => {
         .catch(err => next(err));
     })
     .then(result => {
-
+      const returnedCartItemId = result;
+      const sqlSelect = `
+      select "c"."cartItemId",
+      "c"."price",
+      "p"."productId",
+      "p"."image",
+      "p"."name",
+      "p"."shortDescription"
+  from "cartItems" as "c"
+  join "products" as "p" using ("productId")
+where "c"."cartItemId" = $1
+      `;
+      const queryValue = [returnedCartItemId.cartItemId];
+      return db.query(sqlSelect, queryValue)
+        .then(result => {
+          res.status(201).json(result.rows[0]);
+        });
     })
     .catch(err => next(err.message));
 });
