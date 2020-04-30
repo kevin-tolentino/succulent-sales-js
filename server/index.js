@@ -123,14 +123,16 @@ app.post('/api/cart', (req, res, next) => {
       values ($1, $2, $3)
       returning "cartItemId"
       `;
-      // const values =
-      // return db.query(sqlInsert)
-      //   .then(result => {
-      //     return result.rows[0];
-      //   })
-      //   .catch(err => next(err));
+      const values = [result.cartId, result.productId, result.price];
+      return db.query(sqlInsert, values)
+        .then(result => {
+          return result.rows[0];
+        })
+        .catch(err => next(err));
     })
-    .then(result => { console.log(result); })
+    .then(result => {
+
+    })
     .catch(err => next(err.message));
 });
 
