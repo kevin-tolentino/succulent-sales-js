@@ -89,7 +89,8 @@ app.post('/api/cart', (req, res, next) => {
   }
   const sql = `
   select
-  "price"
+  "price",
+  "productId"
   from
     "products"
   where "productId" = $1
@@ -100,25 +101,36 @@ app.post('/api/cart', (req, res, next) => {
       if (result.rows.length === 0) {
         throw new ClientError(`Product Id: ${req.body.productId} cannot be found`, 400);
       }
-      const price = result.rows[0];
+      const priceAndProductId = result.rows[0];
       const sqlInsert = `
       insert into "carts" ("cartId", "createdAt")
       values (default, default)
       returning "cartId";`;
       return db.query(sqlInsert)
         .then(result => {
-          const returnObj = Object.assign(result.rows[0], price);
+          const returnObj = Object.assign(result.rows[0], priceAndProductId);
           return returnObj;
         })
         .catch(err => next(err));
     })
     .then(result => {
+      // console.log('restult', result);
       const returnedCartId = result.cartId;
       req.session.cartId = returnedCartId;
-      // const sqlInsert
+      // result.price, result.cartId, result.productUd
+      const sqlInsert = `
+      insert into "cartItems" ("cartId", "productId", "price")
+      values ($1, $2, $3)
+      returning "cartItemId"
+      `;
+      // const values =
+      // return db.query(sqlInsert)
+      //   .then(result => {
+      //     return result.rows[0];
+      //   })
+      //   .catch(err => next(err));
     })
-  // .then(result => {})
-  // .then(result => { })
+    .then(result => { console.log(result); })
     .catch(err => next(err.message));
 });
 
