@@ -63,6 +63,7 @@ app.get('/api/products/:productId', (req, res, next) => {
 );
 
 app.get('/api/cart', (req, res, next) => {
+  if (!req.session.cartId) return [];
   const sqlSelect = `
 select
 "cartId",
@@ -101,16 +102,22 @@ app.post('/api/cart', (req, res, next) => {
         throw new ClientError(`Product Id: ${req.body.productId} cannot be found`, 400);
       }
       const priceAndProductId = result.rows[0];
-      const sqlInsert = `
-      insert into "carts" ("cartId", "createdAt")
-      values (default, default)
-      returning "cartId";`;
-      return db.query(sqlInsert)
-        .then(result => {
-          const returnObj = Object.assign(result.rows[0], priceAndProductId);
-          return returnObj;
-        })
-        .catch(err => next(err));
+      if (req.session.cartId !== undefined) {
+        const cartIdSessionObj = { cartId: req.session.cartId };
+        const returnObj = Object.assign(cartIdSessionObj, priceAndProductId);
+        return returnObj;
+      } else {
+        const sqlInsert = `
+        insert into "carts" ("cartId", "createdAt")
+        values (default, default)
+        returning "cartId";`;
+        return db.query(sqlInsert)
+          .then(result => {
+            const returnObj = Object.assign(result.rows[0], priceAndProductId);
+            return returnObj;
+          })
+          .catch(err => next(err));
+      }
     })
     .then(result => {
       const returnedCartId = result.cartId;
