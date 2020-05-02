@@ -105,7 +105,7 @@ app.post('/api/cart', (req, res, next) => {
   db.query(sqlSelect, values)
     .then(result => {
       if (result.rows.length === 0) {
-        throw next(new ClientError(`Product Id: ${req.body.productId} cannot be found`, 400));
+        throw new ClientError(`Product Id: ${req.body.productId} cannot be found`, 400);
       }
       const priceAndProductId = result.rows[0];
       if (req.session.cartId !== undefined) {
@@ -121,8 +121,7 @@ app.post('/api/cart', (req, res, next) => {
           .then(result => {
             const returnObj = Object.assign(result.rows[0], priceAndProductId);
             return returnObj;
-          })
-          .catch(err => next(err));
+          });
       }
     })
     .then(result => {
@@ -137,8 +136,7 @@ app.post('/api/cart', (req, res, next) => {
       return db.query(sqlInsert, values)
         .then(result => {
           return result.rows[0];
-        })
-        .catch(err => next(err));
+        });
     })
     .then(result => {
       const returnedCartItemId = result;
