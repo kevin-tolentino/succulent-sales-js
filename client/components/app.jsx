@@ -21,6 +21,25 @@ export default class App extends React.Component {
     this.setState({ view: { name, params } });
   }
 
+  getCartItems() {
+    const init = {
+      method: 'GET'
+    };
+    fetch('/api/cart', init)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ cart: data });
+      });
+  }
+
+  // getGrades() {
+  //   fetch('/api/grades', { method: 'GET' })
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       this.setState({ grades: data });
+  //     });
+  // }
+
   render() {
     const name = this.state.view.name;
     let componentRender;
