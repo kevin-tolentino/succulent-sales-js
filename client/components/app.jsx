@@ -15,6 +15,7 @@ export default class App extends React.Component {
       cart: []
     };
     this.setView = this.setView.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -37,7 +38,6 @@ export default class App extends React.Component {
         const newStateCartArray = this.state.cart.concat(data);
         this.setState({ cart: newStateCartArray });
       });
-
   }
 
   getCartItems() {
@@ -52,21 +52,13 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  // getGrades() {
-  //   fetch('/api/grades', { method: 'GET' })
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       this.setState({ grades: data });
-  //     });
-  // }
-
   render() {
     const name = this.state.view.name;
     let componentRender;
     if (name === 'catalog') {
       componentRender = <ProductList onClick={this.setView} />;
     } else if (name === 'details') {
-      componentRender = <ProductDetails onClick={this.setView} params={this.state.view.params} />;
+      componentRender = <ProductDetails clickFunction={this.addToCart} onClick={this.setView} params={this.state.view.params} />;
     }
     return (
       <>
