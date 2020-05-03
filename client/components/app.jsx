@@ -17,6 +17,10 @@ export default class App extends React.Component {
     this.setView = this.setView.bind(this);
   }
 
+  componentDidMount() {
+    this.getCartItems();
+  }
+
   setView(name, params) {
     this.setState({ view: { name, params } });
   }
@@ -29,7 +33,8 @@ export default class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({ cart: data });
-      });
+      })
+      .catch(err => console.error(err));
   }
 
   // getGrades() {
