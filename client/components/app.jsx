@@ -10,7 +10,7 @@ export default class App extends React.Component {
       message: null,
       isLoading: true,
       view: {
-        name: 'cart',
+        name: 'catalog',
         params: {}
       },
       cart: []
@@ -70,9 +70,8 @@ export default class App extends React.Component {
         </div>
         <div className="row-2">
           <div className="container">
-            <div className="row">
-              {componentRender}
-            </div>
+
+            {componentRender}
 
           </div>
         </div>

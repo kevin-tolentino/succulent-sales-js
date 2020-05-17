@@ -14,10 +14,21 @@ export default function CartSummary(props) {
 
   return (
     <>
-      <div className="col">
-        <h4>My Cart</h4>
+      <div className="row">
+        <div className="col">
+          <h4>My Cart</h4>
+        </div>
       </div>
-      {reactElementArray}
+
+      {(props.cart.length === 0) ? (<div className="mb-2 row shadow border border-secondary">
+        <div className="col">
+          <h6>No items currently in cart</h6>
+        </div>
+      </div>)
+        : reactElementArray}
+      <div className="col">
+
+      </div>
     </>
   );
 }

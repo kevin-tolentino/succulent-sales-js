@@ -2,11 +2,11 @@ import React from 'react';
 
 export default function CartSummaryItem(props) {
 
-  function handleClick() {
-    const paramObj = { productId: props.productId };
-    props.onClick('catalog', paramObj);
-    // change to correct arguments ^^
-  }
+  // function handleClick() {
+  //   const paramObj = { productId: props.productId };
+  //   props.onClick('catalog', paramObj);
+  //   // change to correct arguments ^^
+  // }
 
   return (
     <div className="mb-2 row shadow border border-secondary">
