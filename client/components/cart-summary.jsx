@@ -26,8 +26,12 @@ export default function CartSummary(props) {
         </div>
       </div>)
         : reactElementArray}
-      <div className="col">
+      <div className="row mt-2">
+        <div className="col">
 
+          {/* Try using reduce array method below */}
+          <h5>Item Total: $5.00</h5>
+        </div>
       </div>
     </>
   );
