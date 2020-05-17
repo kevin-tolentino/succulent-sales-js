@@ -2,6 +2,9 @@ import React from 'react';
 
 export default function CartSummary(props) {
   return (
-    <h1>hello</h1>
+    <div className="col">
+      <h4>My Cart</h4>
+    </div>
+
   );
 }
