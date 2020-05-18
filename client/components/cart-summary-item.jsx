@@ -1,13 +1,6 @@
 import React from 'react';
 
 export default function CartSummaryItem(props) {
-
-  // function handleClick() {
-  //   const paramObj = { productId: props.productId };
-  //   props.onClick('catalog', paramObj);
-  //   // change to correct arguments ^^
-  // }
-
   return (
     <div className="mb-2 row shadow-sm border border-secondary">
       <img className="p-1 col-4 cart-image" src={props.image} alt="product name" />
