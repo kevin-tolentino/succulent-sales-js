@@ -7,7 +7,9 @@ export default function Header(props) {
         <i className=" fas fa-dollar-sign"></i>
         <span className="ml-1">Wicked Sales</span>
       </div>
-      <div className="mr-2 d-flex align-items-center">
+      <div onClick={(name, params) => {
+        props.onClick('cart');
+      }} className="mr-2 cursor-pointer d-flex align-items-center">
         <span>{props.cartItemCount} items <i className="fas fa-shopping-cart"></i></span>
       </div>
 
