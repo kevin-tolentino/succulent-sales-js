@@ -12,6 +12,11 @@ export default function CartSummary(props) {
     );
   });
 
+  let total = 0;
+  for (let priceIterator = 0; priceIterator < props.cart.length; priceIterator++) {
+    total = total + props.cart[priceIterator].price;
+  }
+
   return (
     <>
       <div className="row">
@@ -29,8 +34,7 @@ export default function CartSummary(props) {
       <div className="row mt-2">
         <div className="col">
 
-          {/* Try using reduce array method below */}
-          <h5>Item Total: $5.00</h5>
+          <h5>Item Total: ${total / 100}</h5>
         </div>
       </div>
     </>
