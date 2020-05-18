@@ -19,6 +19,12 @@ export default function CartSummary(props) {
 
   return (
     <>
+      <div className="row mt-3">
+        <h6 id='back-to' onClick={(name, params) => {
+          props.onClick('catalog', props.params);
+        }}
+        className='ml-2 mt-3 back-to'>&#60; back to catalog</h6>
+      </div>
       <div className="row">
         <div className="col">
           <h4>My Cart</h4>

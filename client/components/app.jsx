@@ -66,7 +66,7 @@ export default class App extends React.Component {
     return (
       <>
         <div className="row-1">
-          <Header cartItemCount= {this.state.cart.length} />
+          <Header onClick={this.setView} cartItemCount= {this.state.cart.length} />
         </div>
         <div className="row-2">
           <div className="container">
