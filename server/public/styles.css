@@ -8,14 +8,20 @@ body {
 }
 
 
-.card-image {
+.cart-image, .card-image {
   object-fit: contain;
 }
+
+
 
 h6.back-to {
   cursor: pointer;
 }
 
 .card-div{
+  cursor: pointer;
+}
+
+.cursor-pointer{
   cursor: pointer;
 }

@@ -40,7 +40,9 @@ export default class ProductList extends React.Component {
     return (
 
       <>
-        {reactElementArray}
+        <div className="row">
+          {reactElementArray}
+        </div>
       </>
     );
   }
