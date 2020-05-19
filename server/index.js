@@ -161,8 +161,6 @@ where "c"."cartItemId" = $1
 });
 
 app.post('/api/orders', (req, res, next) => {
-  console.log(req.session);
-  console.log(req.body);
   const keyNames = Object.keys(req.body);
   if (!req.session.cartId) {
     return res.status(400).json({ error: 'CartId not found. Please add items to your cart' });
@@ -177,15 +175,16 @@ app.post('/api/orders', (req, res, next) => {
     return res.status(400).json({ error: 'Invalid fields used for this POST method "creditCard". Please correct any syntax errors, try using a string type value.' });
   }
   const sqlValue = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
-  console.log(sqlValue);
   const sqlInsert = `
         insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
         values ($1, $2, $3, $4)
-        returning *`;
+        returning "orderId","createdAt", "name", "creditCard", "shippingAddress"`;
   db.query(sqlInsert, sqlValue)
     .then(result => {
-      res.status(201).json(result.rows);
-    });
+      delete req.session.cartId;
+      res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
