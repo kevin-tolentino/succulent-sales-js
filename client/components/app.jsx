@@ -87,7 +87,7 @@ export default class App extends React.Component {
     } else if (name === 'cart') {
       componentRender = <CartSummary viewChange={this.setView} cart={this.state.cart} onClick={this.setView} />;
     } else if (name === 'checkout') {
-      componentRender = <CheckoutForm />;
+      componentRender = <CheckoutForm onClick={this.setView}/>;
     }
     return (
       <>
