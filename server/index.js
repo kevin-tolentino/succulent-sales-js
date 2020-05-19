@@ -160,6 +160,13 @@ where "c"."cartItemId" = $1
     .catch(err => next(err));
 });
 
+app.post('/api/orders', (req, res, next) => {
+  console.log(req.session);
+  if (!req.session.cartId) {
+    return res.status(400).json({ error: 'CartId not found. Please add items to your cart' });
+  }
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
