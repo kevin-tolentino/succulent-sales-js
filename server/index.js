@@ -160,6 +160,33 @@ where "c"."cartItemId" = $1
     .catch(err => next(err));
 });
 
+app.post('/api/orders', (req, res, next) => {
+  const keyNames = Object.keys(req.body);
+  if (!req.session.cartId) {
+    return res.status(400).json({ error: 'CartId not found. Please add items to your cart' });
+  }
+  if (!keyNames.includes('name') || typeof req.body.name !== 'string') {
+    return res.status(400).json({ error: 'Invalid fields used for this POST method for "name". Please correct any syntax errors or try using a string type value.' });
+  }
+  if (!keyNames.includes('shippingAddress') || typeof req.body.shippingAddress !== 'string') {
+    return res.status(400).json({ error: 'Invalid fields used for this POST method for "shippingAddress". Please correct any syntax errors or try using a string type value.' });
+  }
+  if (!keyNames.includes('creditCard') || typeof req.body.creditCard !== 'string') {
+    return res.status(400).json({ error: 'Invalid fields used for this POST method "creditCard". Please correct any syntax errors, try using a string type value.' });
+  }
+  const sqlValue = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
+  const sqlInsert = `
+        insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+        values ($1, $2, $3, $4)
+        returning "orderId","createdAt", "name", "creditCard", "shippingAddress"`;
+  db.query(sqlInsert, sqlValue)
+    .then(result => {
+      delete req.session.cartId;
+      res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
