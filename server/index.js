@@ -170,12 +170,22 @@ app.post('/api/orders', (req, res, next) => {
   if (!keyNames.includes('name') || typeof req.body.name !== 'string') {
     return res.status(400).json({ error: 'Invalid fields used for this POST method for "name". Please correct any syntax errors or try using a string type value.' });
   }
-  if (!keyNames.includes('shippingAddress') || typeof req.body.course !== 'string') {
+  if (!keyNames.includes('shippingAddress') || typeof req.body.shippingAddress !== 'string') {
     return res.status(400).json({ error: 'Invalid fields used for this POST method for "shippingAddress". Please correct any syntax errors or try using a string type value.' });
   }
-  if (!keyNames.includes('creditCard') || typeof req.body.grade !== 'string' || req.body.grade < 0) {
+  if (!keyNames.includes('creditCard') || typeof req.body.creditCard !== 'string') {
     return res.status(400).json({ error: 'Invalid fields used for this POST method "creditCard". Please correct any syntax errors, try using a string type value.' });
   }
+  const sqlValue = [req.session.cartId, req.body.name, req.body.creditCard, req.body.shippingAddress];
+  console.log(sqlValue);
+  const sqlInsert = `
+        insert into "orders" ("cartId", "name", "creditCard", "shippingAddress")
+        values ($1, $2, $3, $4)
+        returning *`;
+  db.query(sqlInsert, sqlValue)
+    .then(result => {
+      res.status(201).json(result.rows);
+    });
 });
 
 app.use('/api', (req, res, next) => {
