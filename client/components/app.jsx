@@ -17,6 +17,7 @@ export default class App extends React.Component {
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +52,28 @@ export default class App extends React.Component {
         this.setState({ cart: data });
       })
       .catch(err => console.error(err));
+  }
+
+  placeOrder() {
+    const order = {
+      name: 'John Doe',
+      creditCard: '000 000 0000',
+      shippingAddress: '9200 Irvine Center Drive, Irvine, CA 92618'
+    };
+    const init = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    };
+    fetch('/api/orders', init)
+      .then(res => res.json())
+      .then(data => {
+        const cartReset = [];
+        this.setState({
+          cart: cartReset
+        });
+        this.setView('catalog', {});
+      });
   }
 
   render() {
