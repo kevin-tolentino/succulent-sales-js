@@ -5,7 +5,7 @@ export default function Header(props) {
     <nav className='mt-2 mb-4 navbar text-light bg-dark'>
       <div className="ml-2 navbar-brand">
         <i className=" fas fa-dollar-sign"></i>
-        <span className="ml-1">Wicked Sales</span>
+        <span onClick={() => props.onClick('catalog', {})} className="cursor-pointer ml-1">Wicked Sales</span>
       </div>
       <div onClick={(name, params) => {
         props.onClick('cart');

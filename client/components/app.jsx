@@ -55,12 +55,7 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
-  placeOrder() {
-    const order = {
-      name: 'John Doe',
-      creditCard: '000 000 0000',
-      shippingAddress: '9200 Irvine Center Drive, Irvine, CA 92618'
-    };
+  placeOrder(order) {
     const init = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -87,7 +82,7 @@ export default class App extends React.Component {
     } else if (name === 'cart') {
       componentRender = <CartSummary viewChange={this.setView} cart={this.state.cart} onClick={this.setView} />;
     } else if (name === 'checkout') {
-      componentRender = <CheckoutForm onClick={this.setView}/>;
+      componentRender = <CheckoutForm placeOrder={this.placeOrder} onClick={this.setView}/>;
     }
     return (
       <>

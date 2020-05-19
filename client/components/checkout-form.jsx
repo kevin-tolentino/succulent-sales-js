@@ -11,7 +11,7 @@ export default class CheckoutForm extends React.Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleCreditCardChange = this.handleCreditCardChange.bind(this);
     this.handleShippingAddressChange = this.handleShippingAddressChange.bind(this);
-
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleNameChange(event) {
@@ -28,6 +28,8 @@ export default class CheckoutForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    const submissionInfo = { ...this.state };
+    this.props.placeOrder(submissionInfo);
   }
 
   render() {
@@ -68,13 +70,13 @@ export default class CheckoutForm extends React.Component {
               </div>
               <div className="row">
                 <div className="col">
-                  <h6 id='back-to' onClick={(name, params) => {
+                  <p onClick={(name, params) => {
                     this.props.onClick('catalog', this.props.params);
                   }}
-                  className='ml-2 mt-3 back-to'>&#60; Continue Shopping </h6>
+                  className='back-to text-secondary'>&#60; Continue Shopping </p>
                 </div>
-                <div className="col">
-                  <input className='btn btn-primary' type="submit" value="Place Order" />
+                <div className="col d-flex justify-content-end">
+                  <button className='btn btn-success'>Place Order</button>
                 </div>
               </div>
             </form>
