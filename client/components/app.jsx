@@ -14,7 +14,8 @@ export default class App extends React.Component {
         name: 'cart',
         params: {}
       },
-      cart: []
+      cart: [],
+      totalPrice: null
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -72,6 +73,14 @@ export default class App extends React.Component {
       });
   }
 
+  getTotal() {
+    let total = 0;
+    for (let priceIterator = 0; priceIterator < this.state.cart.length; priceIterator++) {
+      total = total + this.state.cart[priceIterator].price;
+    }
+    return total;
+  }
+
   render() {
     const name = this.state.view.name;
     let componentRender;
@@ -82,7 +91,7 @@ export default class App extends React.Component {
     } else if (name === 'cart') {
       componentRender = <CartSummary viewChange={this.setView} cart={this.state.cart} onClick={this.setView} />;
     } else if (name === 'checkout') {
-      componentRender = <CheckoutForm placeOrder={this.placeOrder} onClick={this.setView}/>;
+      componentRender = <CheckoutForm total={this.getTotal()} placeOrder={this.placeOrder} onClick={this.setView}/>;
     }
     return (
       <>
