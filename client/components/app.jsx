@@ -3,6 +3,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -10,13 +11,15 @@ export default class App extends React.Component {
       message: null,
       isLoading: true,
       view: {
-        name: 'catalog',
+        name: 'cart',
         params: {}
       },
-      cart: []
+      cart: [],
+      totalPrice: null
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -53,6 +56,31 @@ export default class App extends React.Component {
       .catch(err => console.error(err));
   }
 
+  placeOrder(order) {
+    const init = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    };
+    fetch('/api/orders', init)
+      .then(res => res.json())
+      .then(data => {
+        const cartReset = [];
+        this.setState({
+          cart: cartReset
+        });
+        this.setView('catalog', {});
+      });
+  }
+
+  getTotal() {
+    let total = 0;
+    for (let priceIterator = 0; priceIterator < this.state.cart.length; priceIterator++) {
+      total = total + this.state.cart[priceIterator].price;
+    }
+    return total;
+  }
+
   render() {
     const name = this.state.view.name;
     let componentRender;
@@ -61,7 +89,9 @@ export default class App extends React.Component {
     } else if (name === 'details') {
       componentRender = <ProductDetails clickFunction={this.addToCart} onClick={this.setView} params={this.state.view.params} />;
     } else if (name === 'cart') {
-      componentRender = <CartSummary cart={this.state.cart} onClick={this.setView} />;
+      componentRender = <CartSummary viewChange={this.setView} cart={this.state.cart} onClick={this.setView} />;
+    } else if (name === 'checkout') {
+      componentRender = <CheckoutForm total={this.getTotal()} placeOrder={this.placeOrder} onClick={this.setView}/>;
     }
     return (
       <>

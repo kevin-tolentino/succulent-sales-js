@@ -42,6 +42,12 @@ export default function CartSummary(props) {
 
           <h5>Item Total: ${total / 100}</h5>
         </div>
+        {(props.cart.length ? <div className="col d-flex justify-content-end">
+          <button onClick={() => props.viewChange('checkout', {})} className='btn btn-primary'>Checkout</button>
+        </div>
+          : null
+        )}
+
       </div>
     </>
   );
