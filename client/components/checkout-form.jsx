@@ -6,7 +6,8 @@ export default class CheckoutForm extends React.Component {
     this.state = {
       name: '',
       creditCard: '',
-      shippingAddress: ''
+      shippingAddress: '',
+      clicked: false
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleCreditCardChange = this.handleCreditCardChange.bind(this);
@@ -47,6 +48,7 @@ export default class CheckoutForm extends React.Component {
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
+                  required
                   type="text"
                   className="form-control"
                   id="name"
@@ -57,6 +59,7 @@ export default class CheckoutForm extends React.Component {
               <div className="form-group">
                 <label htmlFor="creditCard">Credit Card</label>
                 <input
+                  required
                   type="text"
                   className="form-control"
                   id="creditCart"
@@ -66,7 +69,7 @@ export default class CheckoutForm extends React.Component {
               </div>
               <div className="form-group">
                 <label htmlFor='shippingAddress'>Shipping Address</label>
-                <textarea rows='3' className='form-control' id='shippingAddress' value={this.state.shippingAddress} onChange={this.handleShippingAddressChange} />
+                <textarea required ows='3' className='form-control' id='shippingAddress' value={this.state.shippingAddress} onChange={this.handleShippingAddressChange} />
               </div>
               <div className="row">
                 <div className="col">
