@@ -38,7 +38,7 @@ export default class CheckoutForm extends React.Component {
         <div className="row">
           <div className="col">
             <h1>Checkout</h1>
-            <h6 className='text-secondary'>Order Total: {this.props.total / 100} </h6>
+            <h6 className='text-secondary'>Order Total: ${this.props.total / 100} </h6>
           </div>
         </div>
         <div className="row">
