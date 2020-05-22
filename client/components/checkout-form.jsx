@@ -38,7 +38,7 @@ export default class CheckoutForm extends React.Component {
         <div className="row">
           <div className="col">
             <h1>Checkout</h1>
-            <h6 className='text-secondary'>Order Total: {this.props.total / 100} </h6>
+            <h6 className='text-secondary'>Order Total: ${this.props.total / 100} </h6>
           </div>
         </div>
         <div className="row">
@@ -47,6 +47,7 @@ export default class CheckoutForm extends React.Component {
               <div className="form-group">
                 <label htmlFor="name">Name</label>
                 <input
+                  required
                   type="text"
                   className="form-control"
                   id="name"
@@ -57,6 +58,7 @@ export default class CheckoutForm extends React.Component {
               <div className="form-group">
                 <label htmlFor="creditCard">Credit Card</label>
                 <input
+                  required
                   type="text"
                   className="form-control"
                   id="creditCart"
@@ -66,7 +68,7 @@ export default class CheckoutForm extends React.Component {
               </div>
               <div className="form-group">
                 <label htmlFor='shippingAddress'>Shipping Address</label>
-                <textarea rows='3' className='form-control' id='shippingAddress' value={this.state.shippingAddress} onChange={this.handleShippingAddressChange} />
+                <textarea required ows='3' className='form-control' id='shippingAddress' value={this.state.shippingAddress} onChange={this.handleShippingAddressChange} />
               </div>
               <div className="row">
                 <div className="col">
