@@ -3,13 +3,17 @@ body {
   height: 100vh;
 }
 
-.card-image{
-  height: 250px;
+.card-image:hover{
+  transform: scale(1.15);
 }
 
+.card-image{
+  transition: transform .2s;;
+}
 
 .cart-image, .card-image {
   object-fit: contain;
+  height: 250px;
 }
 
 
