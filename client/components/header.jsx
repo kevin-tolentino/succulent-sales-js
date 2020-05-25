@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Header(props) {
   return (
-    <nav className='mt-2 mb-4 navbar text-light bg-dark'>
+    <nav className='mb-4 navbar text-light bg-dark'>
       <div className="ml-2 navbar-brand">
         <i className=" fas fa-dollar-sign"></i>
         <span onClick={() => props.onClick('catalog', {})} className="cursor-pointer ml-1">Wicked Sales</span>

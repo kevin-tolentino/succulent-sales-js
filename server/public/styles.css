@@ -10,6 +10,7 @@ body {
 
 .cart-image, .card-image {
   object-fit: contain;
+  height: 250px;
 }
 
 
