@@ -31,20 +31,22 @@ export default function CartSummary(props) {
         </div>
       </div>
 
-      {(props.cart.length === 0) ? (<div className="mb-2 row shadow border border-secondary">
+      {(props.cart.length === 0) ? (<div className="mb-2 row">
         <div className="col">
           <h6>No items currently in cart</h6>
         </div>
       </div>)
         : reactElementArray}
-      <div className="row mt-2">
-        <div className="col">
-
-          <h5>Item Total: ${total / 100}</h5>
-        </div>
-        {(props.cart.length ? <div className="col d-flex justify-content-end">
-          <button onClick={() => props.viewChange('checkout', {})} className='btn btn-primary'>Checkout</button>
-        </div>
+      <div className="row mt-2 mb-4">
+        {(props.cart.length
+          ? <>
+            <div className="col d-flex align-items-center">
+              <h5 className='mb-0'>Item Total: ${(total / 100).toFixed(2)}</h5>
+            </div>
+            <div className="col d-flex justify-content-end">
+              <button onClick={() => props.viewChange('checkout', {})} className='btn btn-primary'>Checkout</button>
+            </div>
+          </>
           : null
         )}
 
