@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function CartSummaryItem(props) {
   return (
-    <div className="mb-2 row shadow-sm border border-secondary">
+    <div className="mb-2 p-3 row shadow-sm border border-secondary">
       <img className="p-1 col-4 cart-image" src={props.image} alt="product name" />
       <div className="col-8">
         <h5 className="card-title">{props.name}</h5>
