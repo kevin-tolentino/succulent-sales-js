@@ -31,8 +31,8 @@ export default function CartSummary(props) {
         </div>
       </div>
 
-      {(props.cart.length === 0) ? (<div className="mb-2 row">
-        <div className="col">
+      {(props.cart.length === 0) ? (<div className="mt-2 row">
+        <div className="col text-center">
           <h6>No items currently in cart</h6>
         </div>
       </div>)
