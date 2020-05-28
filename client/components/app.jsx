@@ -102,11 +102,12 @@ export default class App extends React.Component {
     }
     return (
       <>
-        <DeleteModal modalClicked={this.modalClicked}/>
         <div className="row-1">
           <Header onClick={this.setView} cartItemCount= {this.state.cart.length} />
         </div>
         <div className="row-2">
+          <DeleteModal modalClicked={this.modalClicked} />
+
           <div className="container">
 
             {componentRender}
