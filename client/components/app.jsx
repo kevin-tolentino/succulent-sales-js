@@ -16,11 +16,13 @@ export default class App extends React.Component {
         params: {}
       },
       cart: [],
-      totalPrice: null
+      totalPrice: null,
+      modalClicked: false
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.modalClicked = this.modalClicked.bind(this);
   }
 
   componentDidMount() {
@@ -29,6 +31,10 @@ export default class App extends React.Component {
 
   setView(name, params) {
     this.setState({ view: { name, params } });
+  }
+
+  modalClicked() {
+    this.setState({ modalClicked: true });
   }
 
   addToCart(product) {
@@ -96,7 +102,7 @@ export default class App extends React.Component {
     }
     return (
       <>
-        <DeleteModal />
+        <DeleteModal modalClicked={this.modalClicked}/>
         <div className="row-1">
           <Header onClick={this.setView} cartItemCount= {this.state.cart.length} />
         </div>

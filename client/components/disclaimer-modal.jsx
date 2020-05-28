@@ -23,17 +23,17 @@ export default function DeleteModal(props) {
     <>
       {/* {correctTag} */}
       {/* this.handleClickDelete(destinationInfo.destinationId) */}
-      <Modal className='modal' centered show={show} onHide={handleClose}>
-        <Modal.Body className="text-center">Are you sure you want to delete this item?</Modal.Body>
+      <Modal backdrop='static' className='modal' centered show={show} onHide={handleClose}>
+        <Modal.Header>
+          <Modal.Title>Disclaimer</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="text-center">This site is for demonstration purposes only. No real purchases will be made.</Modal.Body>
         <Modal.Footer className="d-flex justify-content-center border-top-0">
-          <Button className="btn-modal-close" variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="danger" onClick={() => {
+          <Button variant="success" onClick={() => {
             handleClose();
-            // props.deleteHandle(props.id);
+            props.modalClicked();
           }}>
-            Delete
+            I agree
           </Button>
         </Modal.Footer>
       </Modal>
