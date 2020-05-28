@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import DeleteModal from './disclaimer-modal';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -95,6 +96,7 @@ export default class App extends React.Component {
     }
     return (
       <>
+        <DeleteModal />
         <div className="row-1">
           <Header onClick={this.setView} cartItemCount= {this.state.cart.length} />
         </div>
