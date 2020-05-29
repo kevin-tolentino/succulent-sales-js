@@ -37,7 +37,7 @@ export default function CartSummary(props) {
         </div>
       </div>)
         : reactElementArray}
-      <div className="row mt-2 mb-4">
+      <div className="row py-2 my-4">
         {(props.cart.length
           ? <>
             <div className="col d-flex align-items-center">
@@ -49,7 +49,6 @@ export default function CartSummary(props) {
           </>
           : null
         )}
-
       </div>
     </>
   );
