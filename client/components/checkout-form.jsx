@@ -44,7 +44,7 @@ export default class CheckoutForm extends React.Component {
         <div className="row">
           <div className="col">
             <form onSubmit={this.handleSubmit}>
-              <div className="form-group">
+              <div className="form-row">
                 <label htmlFor="name">Name</label>
                 <input
                   required
@@ -55,7 +55,7 @@ export default class CheckoutForm extends React.Component {
                   value={this.state.name}
                   onChange={this.handleNameChange} />
               </div>
-              <div className="form-group">
+              <div className="form-row">
                 <label htmlFor="creditCard">Credit Card</label>
                 <input
                   required
@@ -66,11 +66,11 @@ export default class CheckoutForm extends React.Component {
                   value={this.state.creditCard}
                   onChange={this.handleCreditCardChange} />
               </div>
-              <div className="form-group">
+              <div className="form-row">
                 <label htmlFor='shippingAddress'>Shipping Address</label>
                 <textarea required ows='3' className='form-control' id='shippingAddress' value={this.state.shippingAddress} onChange={this.handleShippingAddressChange} />
               </div>
-              <div className="row">
+              <div className="form-row">
                 <div className="col">
                   <p onClick={(name, params) => {
                     this.props.onClick('catalog', this.props.params);
