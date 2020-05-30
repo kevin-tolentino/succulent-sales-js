@@ -4,6 +4,7 @@ import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
 import CheckoutForm from './checkout-form';
+import WelcomeModal from './disclaimer-modal';
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -15,11 +16,13 @@ export default class App extends React.Component {
         params: {}
       },
       cart: [],
-      totalPrice: null
+      totalPrice: null,
+      modalClicked: false
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
+    this.modalClicked = this.modalClicked.bind(this);
   }
 
   componentDidMount() {
@@ -28,6 +31,10 @@ export default class App extends React.Component {
 
   setView(name, params) {
     this.setState({ view: { name, params } });
+  }
+
+  modalClicked() {
+    this.setState({ modalClicked: true });
   }
 
   addToCart(product) {
@@ -99,6 +106,7 @@ export default class App extends React.Component {
           <Header onClick={this.setView} cartItemCount= {this.state.cart.length} />
         </div>
         <div className="row-2">
+          <WelcomeModal modalClicked={this.modalClicked} />
           <div className="container">
 
             {componentRender}
