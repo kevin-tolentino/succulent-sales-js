@@ -14,7 +14,8 @@ export default function WelcomeModal(props) {
           <Modal.Title>Disclaimer</Modal.Title>
         </Modal.Header>
         <Modal.Body className="text-center"><p>
-          This site is for demonstration purposes only. No real purchases will be made. All assets were gathered from: <a href="http://www.morningsunherbfarm.com" target="_blank" rel="noopener noreferrer">Morning Sun Herb Farm</a>, <a href="https://succulentmarket.com/" target="_blank" rel="noopener noreferrer">Succulent Market</a>, <a href="https://en.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>
+          This site is for demonstration purposes only. No real purchases will be made. All assets were gathered from: <a href="http://www.morningsunherbfarm.com" target="_blank" rel="noopener noreferrer">Morning Sun Herb Farm</a>, <a href="https://succulentmarket.com/" target="_blank" rel="noopener noreferrer">Succulent Market</a>, <a href="https://en.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>, <a href="https://www.flaticon.com/free-icon/succulent_1531302" target="_blank" rel="noopener noreferrer">Flat Icon</a>, and <a href="https://wallpaperaccess.com/succulent-desktop" target="_blank" rel="noopener noreferrer">Wallpaper Access</a>
+
         </p>
         </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center border-top-0">

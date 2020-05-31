@@ -1,6 +1,11 @@
 
 body {
   height: 100vh;
+  background-color: #f5deb3;
+}
+
+nav {
+  background-color: rgb(98, 178, 102);
 }
 
 .card-image:hover{
@@ -30,5 +35,11 @@ body {
 
 .logo-styling{
   object-fit: contain;
-  width: 8vw;
+  width: 30px;
+}
+
+.cart-styling{
+  object-fit: contain;
+  width: 30px;
+  fill: #ffffff;
 }
