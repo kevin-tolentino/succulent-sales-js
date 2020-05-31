@@ -13,7 +13,10 @@ export default function WelcomeModal(props) {
         <Modal.Header>
           <Modal.Title>Disclaimer</Modal.Title>
         </Modal.Header>
-        <Modal.Body className="text-center">This site is for demonstration purposes only. No real purchases will be made.</Modal.Body>
+        <Modal.Body className="text-center"><p>
+          This site is for demonstration purposes only. No real purchases will be made. All assets were gathered from: <a href="http://www.morningsunherbfarm.com" target="_blank" rel="noopener noreferrer">Morning Sun Herb Farm</a>, <a href="https://succulentmarket.com/" target="_blank" rel="noopener noreferrer">Succulent Market</a>, <a href="https://en.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a>
+        </p>
+        </Modal.Body>
         <Modal.Footer className="d-flex justify-content-center border-top-0">
           <Button variant="success" onClick={() => {
             handleClose();
