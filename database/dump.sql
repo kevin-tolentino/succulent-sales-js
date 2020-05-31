@@ -291,6 +291,39 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 74	83	2	2595
 75	84	1	2999
 76	84	3	2900
+77	85	1	2999
+78	85	3	2900
+79	86	3	2900
+80	86	1	2999
+81	86	3	2900
+82	86	4	999
+83	87	2	2595
+84	87	4	999
+85	87	6	830
+86	88	3	2900
+87	88	2	2595
+88	88	1	2999
+89	88	1	2999
+90	89	2	2595
+91	89	2	2595
+92	89	2	2595
+93	89	2	2595
+94	89	2	2595
+95	89	2	2595
+96	90	1	2999
+97	90	2	2595
+98	90	6	830
+99	91	1	2999
+100	91	2	2595
+101	91	3	2900
+102	91	3	2900
+103	91	3	2900
+104	91	3	2900
+105	92	3	2900
+106	92	2	2595
+107	93	1	599
+108	93	8	830
+109	93	1	599
 \.
 
 
@@ -383,6 +416,15 @@ COPY public.carts ("cartId", "createdAt") FROM stdin;
 82	2020-05-22 14:50:01.126153-07
 83	2020-05-22 15:12:38.333301-07
 84	2020-05-22 15:45:14.046043-07
+85	2020-05-25 11:51:18.555281-07
+86	2020-05-25 12:14:43.112549-07
+87	2020-05-25 12:28:17.3389-07
+88	2020-05-26 11:02:57.960785-07
+89	2020-05-26 11:10:55.775508-07
+90	2020-05-26 11:25:50.514481-07
+91	2020-05-28 12:09:20.842465-07
+92	2020-05-28 17:53:00.67981-07
+93	2020-05-30 18:22:27.274488-07
 \.
 
 
@@ -400,6 +442,10 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 7	82	f	f	ffff	2020-05-22 14:50:07.990245-07
 8	83	Kevin Tolentino	000-000-0000	1234 Warren Drive	2020-05-22 15:39:13.414125-07
 9	84	John	000 000 0000	1234 Warren Way	2020-05-22 15:46:11.51784-07
+10	85	Kevin Tolentino	000 000 0000	1234 Warren Drive	2020-05-25 11:51:44.007281-07
+11	86	Kevin Tolentino	0000 000 000	1234 Warren Way	2020-05-25 12:26:06.064198-07
+12	87	John Doe	0000 0000 0000	1234 Warren Way	2020-05-25 12:28:45.035005-07
+13	91	Kevin Tolentino	000 000 0000	Warren Way	2020-05-28 17:52:25.868812-07
 \.
 
 
@@ -408,12 +454,14 @@ COPY public.orders ("orderId", "cartId", name, "creditCard", "shippingAddress", 
 --
 
 COPY public.products ("productId", name, price, image, "shortDescription", "longDescription") FROM stdin;
-1	Shake Weight	2999	/images/shake-weight.jpg	Dynamic Inertia technology ignites muscles in arms, shoulders, and chest.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-2	ShamWow	2595	/images/shamwow.jpg	It's like a chamois, towel, and sponge, all in one! Soaks up to 10x it's weight in any liquid!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-3	Snuggie	2900	/images/snuggie.jpg	Super-Soft Fleece with pockets! One Size fits all Adults! Keeps you Warm & Your Hands-Free!	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-4	Wax Vac	999	/images/wax-vac.jpg	Gentle way to remove ear wax. Safe and hygienic. Reduces the risk of painful infections.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-5	Ostrich Pillow	9900	/images/ostrich-pillow.jpg	Create your own snugly space in the world and feel-good anywhere with the ultimate cocoon pillow.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
-6	Tater Mitts	830	/images/tater-mitts.jpg	8 Seconds is all you need with Tater Mitts. Quickly and easily prepare all your favorite potato dishes with Tater Mitts.	Lorem ipsum dolor amet fashion axe pour-over jianbing, adaptogen waistcoat tacos master cleanse pitchfork next level. Thundercats pour-over chartreuse 90's. Master cleanse hot chicken ennui offal. Freegan slow-carb offal hell of. Umami polaroid wolf slow-carb next level. Gentrify cardigan seitan, kombucha tacos chambray roof party typewriter man braid. Tote bag lo-fi hell of chia fam hammock\\n.Aesthetic photo booth la croix, vaporware leggings biodiesel man braid tumeric skateboard tousled slow-carb four dollar toast synth pabst pickled. Typewriter church-key chia slow-carb vice gochujang actually. Shoreditch austin woke hot chicken, single-origin coffee ugh affogato four loko green juice. Migas iPhone four dollar toast mustache.
+1	Aeonium Greenstar	599	/images/aeonium-greenstar.jpg	 A feature which distinguishes this genus from many of its relatives is the manner in which the flowers bear free petals, and are divided into 6 or 12 sections.	Aeonium, the tree houseleeks, is a genus of about 35 species of succulent, subtropical plants of the family Crassulaceae. Many species are popular in horticulture. The genus name comes from the ancient Greek "aionos" (ageless). While most of them are native to the Canary Islands, some are found in Madeira, Morocco, and in East Africa (for example in the Semien Mountains of Ethiopia). The succulent leaves are typically arranged on a basal stem, in a dense, spreading rosette. A feature which distinguishes this genus from many of its relatives is the manner in which the flowers bear free petals, and are divided into 6 or 12 sections. Each rosette produces a central inflorescence only once, and then dies back (though it will usually branch or offset to produce ensuing rosettes).
+2	Aloe Brevifolia	799	/images/aloe-brevifolia.jpg	As it requires winter heat, in temperate regions it is grown under glass or as a houseplant.	Aloe brevifolia, the short-leaved aloe, is a species of flowering plant in the family Asphodelaceae. It is a tiny, compact, blue-green evergreen succulent perennial, that is native to the Western Cape, South Africa. Listed as Vulnerable on IUCN's global Red List, it is threatened in its natural habitat, but is also widely popular as an ornamental plant in rockeries and desert gardens worldwide. As it requires winter heat, in temperate regions it is grown under glass or as a houseplant. In the wild, this diminutive species is completely confined to the dry clay soil of Rens Shale Renosterveld a critically endangered and rapidly disappearing vegetation type. Small populations are normally found growing on inaccessible rocky slopes and cliffs, especially near the coast, but it is thought that these are merely relics of what was once a much wider distribution. There are several subspecies, which are now separated from each other by farmland and other development.
+3	Aloe Ciliaris	699	/images/aloe-ciliaris.jpg	The fleshy leaves themselves are strongly recurved (helping to anchor the tall stems in dense thickets and assist the plant in climbing).	They can be differentiated from other Aloiampelos species by the way that the soft, white, hair-like teeth that grow along the margins of the leaves, extend all the way around the stem, at the base of the leaf. The fleshy leaves themselves are strongly recurved (helping to anchor the tall stems in dense thickets and assist the plant in climbing). The leaf sheaths are conspicuously striped green and white. These plants grow very quickly, producing long, thin, untidy stems that shoot upwards, producing large bright orange-red flowers once they reach the sun. If there are no nearby trees to act as host and support, it just forms a straggly shrub. The red flowers appear mostly from November to April.
+4	Cleistocactus Strausi	599	/images/cleistocactus-strausi.jpg	It is native to mountainous regions of Department Tarija, Bolivia between 1,500 m (4,921 ft) and 3,000 m (9,843 ft).	Cleistocactus strausii, the silver torch or wooly torch, is a perennial cactus of the family Cactaceae. It is native to mountainous regions of Department Tarija, Bolivia between 1,500 m (4,921 ft) and 3,000 m (9,843 ft). Its slender, erect, grey-green columns can reach a height of 3 m (9.8 ft), but are only about 6 cm (2.5 in) across. The columns are formed from around 25 ribs and are densely covered with areoles, supporting four yellow-brown spines up to 4 cm (1.5 in) long and 20 shorter white radials. The cactus prefers free draining soils, strong sunlight, but not high temperatures in fact it can withstand hard frosts down to -10C. In its natural habitat it receives plenty of water during the summer, but almost none over the winter. 
+5	Crassula Arborescens Silver Dollar	999	/images/crassula-arborescens-silver-dollar.jpg	It has round gray "Silver Dollar" leaves. It blooms in winter, with white to pink flowers.	Crassula arborescens, the silver jade plant, silver dollar plant, beestebul, Chinese jade, money plant, or money tree, is a species of succulent plant in the family Crassulaceae. It is an endemic plant of the Western Cape, South Africa. It is a 2 to 4 ft (0.6 to 1.2 m) succulent shrub. It has round gray "Silver Dollar" leaves. It blooms in winter, with white to pink flowers. It is cultivated as an ornamental plant for use in drought tolerant and succulent gardens, and in container gardens. It is also suitable for growing indoors as a houseplant.
+6	First Lady Echeveria	899	/images/first-lady-echeveria.jpg	It is drought tolerant and deer resistant and attracts hummingbirds when it flowers.	First Lady Echeveria is a very decorative succulent perennial for the rock garden or containers, growing as blue green rosettes with frilly pink edges. It is drought tolerant and deer resistant and attracts hummingbirds when it flowers. The color may very due to light or cooler temperatures. Not frost tolerant. Plants may be evergreen or deciduous. Flowers on short stalks (cymes) arise from compact rosettes of succulent fleshy, often brightly coloured leaves. Species are polycarpic, meaning that they may flower and set seed many times over the course of their lifetimes.
+7	Haworthia Turgida	799	/images/haworthia-turgida.jpg	It grows in dense clusters of offsets from the base, and in its native habitat prefers rocky limestone or slate cliffs.	Haworthia turgida, also sometimes known as the windowpane plant, is a species of Haworthia native to the Cape Provinces. Its common name comes from the translucent panes on its leaves, which are similar to those of Haworthia cooperi and some other species in the genus. It grows in dense clusters of offsets from the base, and in its native habitat prefers rocky limestone or slate cliffs. The main type has pale green leaves but varies widely. Varieties include Haworthia turgida var. longibracteata (M.B.Bayer) and Haworthia turgida var. suberecta (Poelln.).
+8	Peperomia Dolabriformis Maxi	899	/images/peperomia-maxi.jpg	Most of them are compact, small perennial epiphytes growing on rotten wood. More than 1500 species have been recorded.	Peperomia (radiator plant) is one of the two large genera of the family Piperaceae, with more than 1000 recorded species. Most of them are compact, small perennial epiphytes growing on rotten wood. More than 1500 species have been recorded, occurring in all tropical and subtropical regions of the world, though concentrated in Central America and northern South America. A limited number of species (around 17) are found in Africa. These tropical perennials are grown for their ornamental foliage. They are mostly natives of tropical America. They are compact and usually do not exceed 12 inches (30 cm) in height. They vary considerably in appearance. Some have threadlike, trailing stems and some have fleshy, stout stems.
 \.
 
 
@@ -421,21 +469,21 @@ COPY public.products ("productId", name, price, image, "shortDescription", "long
 -- Name: cartItems_cartItemId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 76, true);
+SELECT pg_catalog.setval('public."cartItems_cartItemId_seq"', 109, true);
 
 
 --
 -- Name: carts_cartId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."carts_cartId_seq"', 84, true);
+SELECT pg_catalog.setval('public."carts_cartId_seq"', 93, true);
 
 
 --
 -- Name: orders_orderId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."orders_orderId_seq"', 9, true);
+SELECT pg_catalog.setval('public."orders_orderId_seq"', 13, true);
 
 
 --
