@@ -16,8 +16,6 @@ body {
   height: 250px;
 }
 
-
-
 .back-to {
   cursor: pointer;
 }
@@ -28,4 +26,9 @@ body {
 
 .cursor-pointer{
   cursor: pointer;
+}
+
+.logo-styling{
+  object-fit: contain;
+  width: 8vw;
 }
