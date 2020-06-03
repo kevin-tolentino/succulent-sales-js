@@ -52,7 +52,7 @@ export default class CheckoutForm extends React.Component {
                   type="text"
                   className="form-control"
                   id="name"
-                  placeholder="John Doe"
+                  placeholder="Name"
                   value={this.state.name}
                   onChange={this.handleNameChange} />
               </div>
@@ -66,7 +66,7 @@ export default class CheckoutForm extends React.Component {
                   type="text"
                   className="form-control"
                   id="creditCart"
-                  placeholder="xxx-xxx-xxxx"
+                  placeholder="Credit Card"
                   value={this.state.creditCard}
                   onChange={this.handleCreditCardChange} />
               </div>
@@ -75,10 +75,24 @@ export default class CheckoutForm extends React.Component {
               <div className="col">
                 <label htmlFor='shippingAddress'>Shipping Address</label>
                 <textarea required rows='3'
+                  placeholder="Shipping Address"
                   className='form-control'
                   id='shippingAddress'
                   value={this.state.shippingAddress}
                   onChange={this.handleShippingAddressChange} />
+              </div>
+            </div>
+            <div className="form-row mb-4">
+              <div className="col">
+                <div className="form-check">
+                  <input required className="form-check-input"
+                    type="checkbox"
+                    name="disclaimer"
+                    id="disclaimer"/>
+                  <label htmlFor="disclaimer" className="form-check-label">
+                    I understand that this is a demo. I should not use personal information.
+                  </label>
+                </div>
               </div>
             </div>
             <div className="form-row pt-4 my-4">
