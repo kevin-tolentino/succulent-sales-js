@@ -28,7 +28,7 @@ Try the application live at https://succulent-sales.kevintolentino.com/
 
 ## ✨Preview
 <p align="center">
-  <img width=100% alt="App Demo" src="https://github.com/kevin-tolentino/succulent-sales-js/blob/master/server/public/images/succulent-sales-visual-demo.gif" >
+  <img width=100% alt="App Demo" src="https://github.com/kevin-tolentino/succulent-sales-js/blob/master/server/public/images/succulent-sales-square-demo.gif" >
 </p>
 
 ## 📋 Development
@@ -58,29 +58,3 @@ Try the application live at https://succulent-sales.kevintolentino.com/
 4. Start the project. Once started you can view the application by opening http://localhost:3000 in your browser.
 
         npm run dev
-
-
-## 📱 Screenshots 
-
-### iPad Portrait
-<p align="center">
-  <img width=75% alt="iPad Portrait" src="https://github.com/kevin-tolentino/succulent-sales-js/blob/master/server/public/images/iPad%20Portrait.png" >
-</p>
-
-### iPad Landscape
-<p align="center">
-  <img width=100% alt="iPad Landscape" src="https://github.com/kevin-tolentino/succulent-sales-js/blob/master/server/public/images/iPad%20Landscape.png" >
-</>
-
-### iPhone 6/7/8 Portrait
-<p align="center">
-  <img width=48% alt="iPhone 6/7/8 Portrait" src="https://github.com/kevin-tolentino/succulent-sales-js/blob/master/server/public/images/iPhone%206%207%208%20Portrait.png" >
-</div>
-
-### iPhone 6/7/8 Landscape
-<p align="center">
-  <img width=100% alt="iPhone 6/7/8 Landscape" src="https://github.com/kevin-tolentino/succulent-sales-js/blob/master/server/public/images/iPhone%206%207%208%20Landscape.png" >
-</p>
-
-
-
